@@ -30,10 +30,11 @@ const deleteUser = async (req, res) => {
     if (user.role === "Admin") {
       return res.status(400).json({ message: "Cannot delete an Admin user" });
     }
-
+    // Delete all tasks created by this user
+    await Task.deleteMany({ createdBy: req.params.id });
     await user.deleteOne();
 
-    res.status(200).json({ message: "User deleted successfully" });
+    res.status(200).json({ message: "User and their tasks deleted successfully" });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
