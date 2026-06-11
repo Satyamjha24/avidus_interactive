@@ -1,3 +1,6 @@
+## Live Link
+https://avidus-interactive-1job.vercel.app/
+
 ## Summary
 Implemented role-based authentication and user activity tracking for the Task Manager application.
 
