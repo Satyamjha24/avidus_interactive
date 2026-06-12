@@ -13,7 +13,7 @@ const AdminDashboard = () => {
   useEffect(() => {
     const fetchAnalytics = async () => {
       try {
-        const { data } = await axiosInstance.get("/admin/analytics");
+        const { data } = await axiosInstance.get("/api/admin/analytics");
         setAnalytics(data);
       } catch (err) {
         setError(`Failed to load analytics: ${err.response?.data?.message || "Something went wrong"}`);

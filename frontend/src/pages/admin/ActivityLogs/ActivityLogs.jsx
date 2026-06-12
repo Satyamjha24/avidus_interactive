@@ -15,7 +15,7 @@ const ActivityLogs = () => {
   useEffect(() => {
       const fetchLogs = async () => {
         try {
-          const { data } = await axiosInstance.get("/activity");
+          const { data } = await axiosInstance.get("/api/activity");
           setLogs(data);
         } catch (err) {
           setError(`Failed to load activity logs: ${err.message}`);

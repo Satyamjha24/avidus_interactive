@@ -28,7 +28,7 @@ const Tasks = () => {
   useEffect(() => {
       const fetchTasks = async () => {
         try {
-          const { data } = await axiosInstance.get("/tasks");
+          const { data } = await axiosInstance.get("/api/tasks");
           setTasks(data);
         } catch (err) {
           setError(`Failed to load tasks: ${err.response?.data?.message || "Something went wrong"}`);
@@ -80,12 +80,12 @@ const Tasks = () => {
     try {
       if (selectedTask) {
         const { data } = await axiosInstance.put(
-          `/tasks/${selectedTask._id}`,
+          `/api/tasks/${selectedTask._id}`,
           formData
         );
         setTasks(tasks.map((t) => (t._id === data._id ? data : t)));
       } else {
-        const { data } = await axiosInstance.post("/tasks", formData);
+        const { data } = await axiosInstance.post("/api/tasks", formData);
         setTasks([data, ...tasks]);
       }
       handleCloseModal();
@@ -100,7 +100,7 @@ const Tasks = () => {
     if (!window.confirm("Are you sure you want to delete this task?")) return;
 
     try {
-      await axiosInstance.delete(`/tasks/${taskId}`);
+      await axiosInstance.delete(`/api/tasks/${taskId}`);
       setTasks(tasks.filter((t) => t._id !== taskId));
     } catch (err) {
       setError(`Failed to delete task: ${err.response?.data?.message || "Something went wrong"}`);

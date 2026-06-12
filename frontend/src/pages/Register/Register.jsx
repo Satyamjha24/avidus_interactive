@@ -37,7 +37,7 @@ const Register = () => {
     setError("");
 
     try {
-      const { data } = await axiosInstance.post("/auth/register", {
+      const { data } = await axiosInstance.post("/api/auth/register", {
         name: formData.name,
         email: formData.email,
         password: formData.password,

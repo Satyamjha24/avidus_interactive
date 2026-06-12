@@ -20,7 +20,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const { data } = await axiosInstance.get("/tasks");
+        const { data } = await axiosInstance.get("/api/tasks");
         const total = data.length;
         const pending = data.filter((t) => t.status === "Pending").length;
         const inProgress = data.filter((t) => t.status === "In Progress").length;

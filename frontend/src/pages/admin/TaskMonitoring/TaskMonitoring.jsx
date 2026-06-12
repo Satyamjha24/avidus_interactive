@@ -27,7 +27,7 @@ const TaskMonitoring = () => {
   useEffect(() => {
       const fetchTasks = async () => {
         try {
-          const { data } = await axiosInstance.get("/admin/tasks");
+          const { data } = await axiosInstance.get("/api/admin/tasks");
           setTasks(data);
         } catch (err) {
           setError(`Failed to load tasks: ${err.response?.data?.message || "Something went wrong"}`);
@@ -43,7 +43,7 @@ const TaskMonitoring = () => {
     if (!window.confirm("Are you sure you want to delete this task?")) return;
 
     try {
-      await axiosInstance.delete(`/admin/tasks/${taskId}`);
+      await axiosInstance.delete(`/api/admin/tasks/${taskId}`);
       setTasks(tasks.filter((t) => t._id !== taskId));
     } catch (err) {
       setError(`Failed to delete task: ${err.response?.data?.message || "Something went wrong"}`);

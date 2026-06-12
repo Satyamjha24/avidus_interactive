@@ -14,7 +14,7 @@ const UserManagement = () => {
   useEffect(() => {
       const fetchUsers = async () => {
         try {
-          const { data } = await axiosInstance.get("/admin/users");
+          const { data } = await axiosInstance.get("/api/admin/users");
           setUsers(data);
         } catch (err) {
           setError(`Failed to load users: ${err.response?.data?.message || "Something went wrong"}`);
@@ -30,7 +30,7 @@ const UserManagement = () => {
     if (!window.confirm("Are you sure you want to delete this user?")) return;
 
     try {
-      await axiosInstance.delete(`/admin/users/${userId}`);
+      await axiosInstance.delete(`/api/admin/users/${userId}`);
       setUsers(users.filter((u) => u._id !== userId));
     } catch (err) {
       setError(err.response?.data?.message || "Failed to delete user");
@@ -39,7 +39,7 @@ const UserManagement = () => {
 
   const handleStatusChange = async (userId, newStatus) => {
     try {
-      await axiosInstance.patch(`/admin/users/${userId}/status`, {
+      await axiosInstance.patch(`/api/admin/users/${userId}/status`, {
         status: newStatus,
       });
       setUsers(
