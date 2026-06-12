@@ -1,8 +1,6 @@
 const ActivityLog = require("../models/ActivityLog");
 
-// @desc    Get all activity logs
-// @route   GET /api/activity
-// @access  Admin
+// Get all activity logs
 const getAllActivityLogs = async (req, res) => {
   try {
     const logs = await ActivityLog.find()
@@ -15,9 +13,7 @@ const getAllActivityLogs = async (req, res) => {
   }
 };
 
-// @desc    Get activity logs of a specific user
-// @route   GET /api/activity/user/:userId
-// @access  Admin
+// Get activity logs of a specific user
 const getUserActivityLogs = async (req, res) => {
   try {
     const logs = await ActivityLog.find({ user: req.params.userId })
