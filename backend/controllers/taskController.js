@@ -1,9 +1,7 @@
 const Task = require("../models/Task");
 const ActivityLog = require("../models/ActivityLog");
 
-// @desc    Create a new task
-// @route   POST /api/tasks
-// @access  Protected
+// Create a new task
 const createTask = async (req, res) => {
   try {
     const { title, description, status, priority, dueDate } = req.body;
@@ -33,9 +31,8 @@ const createTask = async (req, res) => {
   }
 };
 
-// @desc    Get all tasks of logged in user
-// @route   GET /api/tasks
-// @access  Protected
+// Get all tasks of logged in user
+
 const getMyTasks = async (req, res) => {
   try {
     const tasks = await Task.find({ createdBy: req.user._id }).sort({
@@ -67,9 +64,8 @@ const getTaskById = async (req, res) => {
   }
 };
 
-// @desc    Update own task
-// @route   PUT /api/tasks/:id
-// @access  Protected
+// Update own task
+
 const updateTask = async (req, res) => {
   try {
     const task = await Task.findOne({
@@ -103,9 +99,8 @@ const updateTask = async (req, res) => {
   }
 };
 
-// @desc    Delete own task
-// @route   DELETE /api/tasks/:id
-// @access  Protected
+// Delete own task
+
 const deleteTask = async (req, res) => {
   try {
     const task = await Task.findOne({

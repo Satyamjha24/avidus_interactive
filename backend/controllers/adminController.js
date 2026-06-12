@@ -1,9 +1,7 @@
 const User = require("../models/User");
 const Task = require("../models/Task");
 
-// @desc    Get all users
-// @route   GET /api/admin/users
-// @access  Admin
+// Get all users
 const getAllUsers = async (req, res) => {
   try {
     const users = await User.find({ role: "User" })
@@ -16,9 +14,8 @@ const getAllUsers = async (req, res) => {
   }
 };
 
-// @desc    Delete a user by ID
-// @route   DELETE /api/admin/users/:id
-// @access  Admin
+// Delete a user by ID
+
 const deleteUser = async (req, res) => {
   try {
     const user = await User.findById(req.params.id);
@@ -40,9 +37,7 @@ const deleteUser = async (req, res) => {
   }
 };
 
-// @desc    Update user status Active or Inactive
-// @route   PATCH /api/admin/users/:id/status
-// @access  Admin
+// Update user status Active or Inactive
 const updateUserStatus = async (req, res) => {
   try {
     const { status } = req.body;
@@ -73,9 +68,8 @@ const updateUserStatus = async (req, res) => {
   }
 };
 
-// @desc    Get all tasks across all users
-// @route   GET /api/admin/tasks
-// @access  Admin
+// Get all tasks across all users
+
 const getAllTasks = async (req, res) => {
   try {
     const tasks = await Task.find()
@@ -88,9 +82,7 @@ const getAllTasks = async (req, res) => {
   }
 };
 
-// @desc    Delete any task
-// @route   DELETE /api/admin/tasks/:id
-// @access  Admin
+// Delete any task
 const deleteAnyTask = async (req, res) => {
   try {
     const task = await Task.findById(req.params.id);
@@ -107,9 +99,8 @@ const deleteAnyTask = async (req, res) => {
   }
 };
 
-// @desc    Get analytics for admin dashboard
-// @route   GET /api/admin/analytics
-// @access  Admin
+// Get analytics for admin dashboard
+
 const getAnalytics = async (req, res) => {
   try {
     const totalUsers = await User.countDocuments({ role: "User" });
